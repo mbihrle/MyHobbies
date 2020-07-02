@@ -11,6 +11,7 @@
 
                 <div class="card-body">
                   Willkommen bei MyHobbies!
+                  <span class="btn btn-primary"><i class="fas fa-plus"> Hallo</i></span>
                 </div>
             </div>
         </div>
