@@ -8,8 +8,9 @@
                 <div class="card-header">Hobby bearbeiten</div>
 
                 <div class="card-body">
-                    <form action="/hobby" method="post">
+                    <form action="/hobby/{{ $hobby->id}}" method="post">
                         @csrf
+                        @method('put')
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text"
