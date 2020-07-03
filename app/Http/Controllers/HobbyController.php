@@ -40,7 +40,6 @@ class HobbyController extends Controller
             [
                 'name' => 'required|min:3',
                 'beschreibung' => 'required|min:5'
-
             ]
             );
         $hobby = new Hobby(
