@@ -83,8 +83,17 @@
         </nav>
 
         <main class="py-4">
+
+            @isset($meldung_success)
+            <div class="container">
+                <div class="alert alert-success">
+                        {!! $meldung_success !!}
+                </div>
+            </div>
+            @endisset
+
             @if($errors->any())
-                <div class="con">
+                <div class="container">
                     <div class="alert alert-danger">
                             Bitte überprüfe deine Eingaben.
                             <ul class="mb-0">
