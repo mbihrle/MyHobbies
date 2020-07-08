@@ -18,6 +18,7 @@
                         @method('delete')
                         <input class="btn btn-outline-danger btn-sm ml-2" type="submit" value="Löschen">
                     </form>
+                <div class="float-right">{{ $hobby->created_at->diffForHumans() }}</div>
                 </li>
                   {{-- Link auf Hobby --}}
                   {{-- <li class="list-group-item"><a class="ml-2" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a></li> --}}
