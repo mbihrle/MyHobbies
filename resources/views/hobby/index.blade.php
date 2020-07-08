@@ -24,7 +24,9 @@
                   {{-- <li class="list-group-item"><a class="ml-2" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a></li> --}}
                       @endforeach
                   </ul>
+                  @auth
                   <a class="btn btn-success btn-sm mt-3" href="hobby/create"><i class="fas fa-plus-circle"></i> Neues Hobby anlegen</a>
+                  @endauth
                   <div class="mt-3">
                     {{$hobbies->links()}}
                   </div>
