@@ -24,6 +24,10 @@
                         @csrf
                         @method('delete')
                         <input class="btn btn-outline-danger btn-sm ml-2" type="submit" value="Löschen">
+                        <br>
+                        @foreach($hobby->tags as $tag)
+                            <a class="badge badge-{{ $tag->style }}"href="">{{ $tag->name}}</a>
+                        @endforeach
                     </form>
                 <div class="float-right">{{ $hobby->created_at->diffForHumans() }}</div>
                 </li>
