@@ -28,3 +28,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('hobby', 'HobbyController');
 Route::resource('tag', 'TagController');
 Route::resource('user', 'UserController');
+
+Route::get('/hobby/tag/{tag_id}', 'hobbyTagController@getFilteredHobbies')->name('hobby_tag');
