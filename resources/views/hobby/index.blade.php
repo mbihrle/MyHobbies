@@ -10,8 +10,15 @@
                 <div class="card-body">
                   <ul class="list-group">
                       @foreach($hobbies as $hobby)
-                  <li class="list-group-item">{{ $hobby->name }}
-                    <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
+
+                  {{-- Hobby ohne Link --}}
+                  {{-- <li class="list-group-item">{{ $hobby->name }} --}}
+                  <li class="list-group-item"><a href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
+                    {{-- Extra Link Detailansicht --}}
+                    {{-- <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a> --}}
+
+                  <span class="mx-2">Von {{ $hobby->user->name }} ({{ $hobby->user->hobbies->count() }} Hobbies)</span>
+
                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i>Bearbeiten</a>
                     <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
                         @csrf
@@ -20,8 +27,6 @@
                     </form>
                 <div class="float-right">{{ $hobby->created_at->diffForHumans() }}</div>
                 </li>
-                  {{-- Link auf Hobby --}}
-                  {{-- <li class="list-group-item"><a class="ml-2" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a></li> --}}
                       @endforeach
                   </ul>
                   @auth
