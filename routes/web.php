@@ -27,3 +27,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('hobby', 'HobbyController');
 Route::resource('tag', 'TagController');
+Route::resource('user', 'UserController');
