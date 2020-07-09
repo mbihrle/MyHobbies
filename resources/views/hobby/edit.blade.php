@@ -18,6 +18,11 @@
                                 id="name" name="name" value="{{ old('name') ?? $hobby->name }}">
                             <small class="form-text text-danger">{!! $errors->first('name') !!}</small>
                         </div>
+                        <div class="mb-2">
+                            @if (file_exists("img/hobby/" . $hobby->id . "_gross.jpg"))
+                            <img style="max-width: 400px; max-height: 300px;" src="/img/hobby/{{ $hobby->id }}_gross.jpg" alt="thumb">
+                            @endif
+                        </div>
                         <div class="form-group">
                             <label for="bild">Bild</label>
                             <input type="file"
