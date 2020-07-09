@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
+
 class HobbyController extends Controller
 {
     /**
@@ -20,6 +21,7 @@ class HobbyController extends Controller
     {
         // $hobbies = Hobby::all();
         // $hobbies = Hobby::paginate(10);
+
 
         $meldung_success = Session::get('meldung_success');
 
@@ -127,7 +129,8 @@ class HobbyController extends Controller
 
             $hobby->update([
                 'name' => $request->name,
-                'beschreibung' => $request->beschreibung
+                'beschreibung' => $request->beschreibung,
+                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
             ]);
         return $this->index()->with([
             'meldung_success' => 'Das Hobby <b>'. $request->name . '</b> wurde bearbeitet.'
