@@ -180,4 +180,15 @@ class HobbyController extends Controller
                 ->save(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
         }
     }
+
+    public function deleteImages($hobby_id) {
+        if (file_exists(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg'))
+            unlink(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
+        if (file_exists(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg'))
+            unlink(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg');
+        if (file_exists(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg'))
+            unlink(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg');
+        return back();
+
+    }
 }
