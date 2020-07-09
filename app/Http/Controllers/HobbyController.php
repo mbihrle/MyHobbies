@@ -55,7 +55,8 @@ class HobbyController extends Controller
         $request->validate(
             [
                 'name' => 'required|min:3',
-                'beschreibung' => 'required|min:5'
+                'beschreibung' => 'required|min:5',
+                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
             ]
             );
         $hobby = new Hobby(
@@ -123,14 +124,14 @@ class HobbyController extends Controller
         $request->validate(
             [
                 'name' => 'required|min:3',
-                'beschreibung' => 'required|min:5'
+                'beschreibung' => 'required|min:5',
+                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
             ]
             );
 
             $hobby->update([
                 'name' => $request->name,
-                'beschreibung' => $request->beschreibung,
-                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
+                'beschreibung' => $request->beschreibung
             ]);
         return $this->index()->with([
             'meldung_success' => 'Das Hobby <b>'. $request->name . '</b> wurde bearbeitet.'
