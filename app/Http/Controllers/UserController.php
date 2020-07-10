@@ -86,7 +86,7 @@ class UserController extends Controller
             );
 
             if ($request->bild) {
-                $this->saveImages($request->bild);
+                $this->saveImages($request->bild, $user->id);
             }
 
             $user->update([
@@ -112,7 +112,7 @@ class UserController extends Controller
     {
         //
     }
-    public function saveImages($bildInput) {
+    public function saveImages($bildInput, $user_id) {
         $bild = Image::make($bildInput);
         $breite = $bild->width();
         $hoehe = $bild->height();
@@ -120,32 +120,32 @@ class UserController extends Controller
             //Querformat
             Image::make($bildInput)
                 ->widen(500)
-                ->save(public_path() . '/img/user/' . auth()->id() . '_gross.jpg')
+                ->save(public_path() . '/img/user/' . $user_id . '_gross.jpg')
                 ->widen(400)->pixelate(12)
-                ->save(public_path() . '/img/user/' . auth()->id() . '_verpixelt.jpg');
+                ->save(public_path() . '/img/user/' . $user_id . '_verpixelt.jpg');
             Image::make($bildInput)
                 ->widen(60)
-                ->save(public_path() . '/img/user/' . auth()->id() . '_thumb.jpg');
+                ->save(public_path() . '/img/user/' . $user_id . '_thumb.jpg');
         } else {
             //Hochformat
             Image::make($bildInput)
                 ->heighten(500)
-                ->save(public_path() . '/img/user/' . auth()->id() . '_gross.jpg')
+                ->save(public_path() . '/img/user/' . $user_id . '_gross.jpg')
                 ->heighten(400)->pixelate(12)
-                ->save(public_path() . '/img/user/' . auth()->id (). '_verpixelt.jpg');
+                ->save(public_path() . '/img/user/' . $user_id . '_verpixelt.jpg');
             Image::make($bildInput)
                 ->heighten(60)
-                ->save(public_path() . '/img/user/' . auth()->id() . '_thumb.jpg');
+                ->save(public_path() . '/img/user/' . $user_id . '_thumb.jpg');
         }
     }
 
-    public function deleteImages() {
-        if (file_exists(public_path() . '/img/user/' . auth()->id() . '_thumb.jpg'))
-            unlink(public_path() . '/img/user/' . auth()->id() . '_thumb.jpg');
-        if (file_exists(public_path() . '/img/user/' . auth()->id() . '_gross.jpg'))
-            unlink(public_path() . '/img/user/' . auth()->id() . '_gross.jpg');
-        if (file_exists(public_path() . '/img/user/' . auth()->id() . '_verpixelt.jpg'))
-            unlink(public_path() . '/img/user/' . auth()->id() . '_verpixelt.jpg');
+    public function deleteImages($user_id) {
+        if (file_exists(public_path() . '/img/user/' . $user_id . '_thumb.jpg'))
+            unlink(public_path() . '/img/user/' . $user_id . '_thumb.jpg');
+        if (file_exists(public_path() . '/img/user/' . $user_id . '_gross.jpg'))
+            unlink(public_path() . '/img/user/' . $user_id . '_gross.jpg');
+        if (file_exists(public_path() . '/img/user/' . $user_id . '_verpixelt.jpg'))
+            unlink(public_path() . '/img/user/' . $user_id . '_verpixelt.jpg');
         return back();
     }
 
