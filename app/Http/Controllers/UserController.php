@@ -90,7 +90,7 @@ class UserController extends Controller
             }
 
             $user->update([
-                'motto' => $request->name,
+                'motto' => $request->motto,
                 'ueber_mich' => $request->ueber_mich
             ]);
         // return $this->index()->with([
