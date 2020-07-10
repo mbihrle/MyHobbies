@@ -189,6 +189,5 @@ class HobbyController extends Controller
         if (file_exists(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg'))
             unlink(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg');
         return back();
-
     }
 }
