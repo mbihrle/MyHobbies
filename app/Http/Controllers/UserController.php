@@ -87,9 +87,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if (auth()->guest()) {
-            abort(403);
-        }
 
         abort_unless(Gate::allows('update', $user), 403);
 

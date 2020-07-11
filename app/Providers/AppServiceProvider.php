@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // $this->registerPolicies();
+
+        Gate::define('connect_hobbyTag', function($user, $hobby) {
+            return $user->id === $hobby->user_id || $user->rolle === 'admin';
+        });
     }
 }

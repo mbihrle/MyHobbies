@@ -11,9 +11,11 @@ class HobbyPolicy
     use HandlesAuthorization;
 
     public function before($user, $ability) {
+
         if ($user->rolle === 'admin') {
             return true;
         }
+
     }
 
     /**

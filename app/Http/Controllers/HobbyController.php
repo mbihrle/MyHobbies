@@ -135,6 +135,7 @@ class HobbyController extends Controller
 
         abort_unless(Gate::allows('update', $hobby), 403);
 
+
         $request->validate(
             [
                 'name' => 'required|min:3',
