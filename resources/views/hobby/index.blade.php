@@ -31,11 +31,7 @@
                                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>
                                     @endcan
                                     @can('update', $hobby)
-                                    <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input class="btn btn-outline-danger btn-sm ml-2" type="submit" value="Löschen">
-                                    </form>
+                                    <button onClick="confirm_delete('das Hobby', '{{ $hobby->name }}', 'hobby', '{{ $hobby->id }}');" class="btn btn-sm btn-outline-danger ml-2">Löschen</button>
                                     @endcan
 
 
@@ -56,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            @include('_partials.loeschenFormular')
         </div>
     </div>
 @endsection

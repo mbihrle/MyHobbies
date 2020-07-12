@@ -120,6 +120,7 @@
                 </div>
             @endif
             @yield('content')
+
         </main>
     </div>
 </body>
